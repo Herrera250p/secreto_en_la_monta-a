@@ -11,7 +11,7 @@ public class Ingeniero {
     }
 
     public Ingeniero(int idIngeniero, String nombre, String apellidoPaterno,
-                     String apellidoMaterno, int idEmpleado, int idUsuario) {
+                    String apellidoMaterno, int idEmpleado, int idUsuario) {
         this.idIngeniero = idIngeniero;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;

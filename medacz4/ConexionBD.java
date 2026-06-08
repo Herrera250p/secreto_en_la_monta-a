@@ -7,9 +7,9 @@ public class ConexionBD {
     private static final String URL =
             "jdbc:mysql://localhost:3306/medacz?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
-    private static final String USUARIO = "root";
+    private static final String USUARIO = "medacz";
 
-    private static final String PASSWORD = "Chouni93";
+    private static final String PASSWORD = "MeDaCz";
 
     private ConexionBD() {
     }
