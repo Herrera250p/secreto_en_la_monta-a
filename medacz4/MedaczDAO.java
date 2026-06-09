@@ -190,8 +190,10 @@ public class MedaczDAO {
 
         String sql = """
             SELECT s.id_soli, s.fecha_soli, s.tipo_servi, s.observaciones,
-                   s.estado, s.id_hos, s.id_eqpo, s.id_ing, s.fecha_visita
+                   s.estado, s.id_hos, s.id_eqpo, s.id_ing, s.fecha_visita,
+                   e.nom_eqpo, e.num_serie
             FROM solicitud_servicio s
+            LEFT JOIN equipo_medico e ON s.id_eqpo = e.id_eqpo
             WHERE (? = 0 OR s.id_hos = ?)
             ORDER BY s.id_soli DESC
         """;
@@ -215,6 +217,8 @@ public class MedaczDAO {
                     solicitud.setIdEquipo(rs.getInt("id_eqpo"));
                     solicitud.setIdIngeniero(rs.getInt("id_ing"));
                     solicitud.setFechaVisita(String.valueOf(rs.getDate("fecha_visita")));
+                    solicitud.setNomEquipo(rs.getString("nom_eqpo"));
+                    solicitud.setNumSerie(rs.getInt("num_serie"));
 
                     lista.add(solicitud);
                 }

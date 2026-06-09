@@ -43,7 +43,7 @@ public class FrmSolicitudesIngeniero extends JFrame {
         panel.add(titulo);
 
         modelo = new DefaultTableModel(
-                new String[]{"ID", "Fecha", "Tipo Servicio", "Estado", "Fecha Visita", "Falla"},
+                new String[]{"Equipo", "Serie", "Fecha", "Tipo Servicio", "Estado", "Fecha Visita"},
                 0
         ) {
             @Override
@@ -88,12 +88,12 @@ public class FrmSolicitudesIngeniero extends JFrame {
 
             for (SolicitudServicio s : solicitudes) {
                 modelo.addRow(new Object[]{
-                    s.getIdSolicitud(),
+                    s.getNomEquipo() != null ? s.getNomEquipo() : "Sin equipo",
+                    s.getNumSerie(),
                     s.getFecha(),
                     s.getTipoServicio(),
                     s.getEstado(),
-                    s.getFechaVisita(),
-                    s.getFalla()
+                    s.getFechaVisita()
                 });
             }
 

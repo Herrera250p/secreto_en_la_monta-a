@@ -2,6 +2,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
+import java.awt.Image;
 
 public class FrmInicio extends JFrame {
 
@@ -20,17 +23,38 @@ public class FrmInicio extends JFrame {
         panel.setBackground(Estilos.FONDO);
         setContentPane(panel);
 
-        JLabel lblTitulo = Estilos.label("MEDACZ", Estilos.TITULO);
-        lblTitulo.setBounds(370, 80, 200, 45);
-        panel.add(lblTitulo);
+        // Try to load logo.png from project root. If not found, fall back to text title.
+        ImageIcon logoIcon = null;
+        try {
+            logoIcon = new ImageIcon("logo.png");
+            if (logoIcon.getIconWidth() > 0) {
+                Image img = logoIcon.getImage().getScaledInstance(300, 120, Image.SCALE_SMOOTH);
+                logoIcon = new ImageIcon(img);
+                JLabel lblLogo = new JLabel(logoIcon);
+                lblLogo.setBounds(300, 30, 300, 120);
+                panel.add(lblLogo);
+                // set window icon if available
+                try {
+                    setIconImage(Toolkit.getDefaultToolkit().getImage("logo.png"));
+                } catch (Exception ex) {
+                    // ignore
+                }
+            } else {
+                throw new Exception("logo not found");
+            }
+        } catch (Exception ex) {
+            JLabel lblTitulo = Estilos.label("MEDACZ", Estilos.TITULO);
+            lblTitulo.setBounds(370, 80, 200, 45);
+            panel.add(lblTitulo);
 
-        JLabel lblLinea1 = Estilos.label("Mantenimiento a", Estilos.SUBTITULO);
-        lblLinea1.setBounds(315, 145, 310, 40);
-        panel.add(lblLinea1);
+            JLabel lblLinea1 = Estilos.label("Mantenimiento a", Estilos.SUBTITULO);
+            lblLinea1.setBounds(315, 145, 310, 40);
+            panel.add(lblLinea1);
 
-        JLabel lblLinea2 = Estilos.label("equipo medico", Estilos.SUBTITULO);
-        lblLinea2.setBounds(320, 195, 310, 40);
-        panel.add(lblLinea2);
+            JLabel lblLinea2 = Estilos.label("equipo medico", Estilos.SUBTITULO);
+            lblLinea2.setBounds(320, 195, 310, 40);
+            panel.add(lblLinea2);
+        }
 
         btnIniciarSesion = Estilos.boton("Iniciar Sesión");
         btnIniciarSesion.setBounds(315, 300, 270, 50);

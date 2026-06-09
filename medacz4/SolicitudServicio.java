@@ -9,6 +9,8 @@ public class SolicitudServicio {
     private int idEquipo;
     private int idIngeniero;
     private String fechaVisita;
+    private String nomEquipo;
+    private int numSerie;
 
     public SolicitudServicio() {
     }
@@ -94,6 +96,22 @@ public class SolicitudServicio {
 
     public void setFechaVisita(String fechaVisita) {
         this.fechaVisita = fechaVisita;
+    }
+
+    public String getNomEquipo() {
+        return nomEquipo;
+    }
+
+    public void setNomEquipo(String nomEquipo) {
+        this.nomEquipo = nomEquipo;
+    }
+
+    public int getNumSerie() {
+        return numSerie;
+    }
+
+    public void setNumSerie(int numSerie) {
+        this.numSerie = numSerie;
     }
 
     @Override
